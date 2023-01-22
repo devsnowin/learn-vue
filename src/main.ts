@@ -4,5 +4,5 @@ import PokemonApp from './PokemonApp.vue';
 
 import './assets/main.css';
 
-createApp(App).mount('#app');
-// createApp(PokemonApp).mount('#app');
+// createApp(App).mount('#app');
+createApp(PokemonApp).mount('#app');

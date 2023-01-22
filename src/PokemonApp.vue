@@ -1,32 +1,35 @@
 <script>
-import BaseButton from './components/BaseButton.vue';
-
-const URL = 'https://pokeapi.co/api/v2/pokemon?limit=151';
-
+import Pokedex from './components/Pokedex.vue';
 export default {
-  data: () => ({
-    pokedex: [],
-  }),
-  methods: {
-    async fetchPokemon() {
-      const res = await fetch(URL);
-      const data = await res.json();
-      console.log(data.results);
-      this.pokedex = data.results;
-    },
-  },
-  components: { BaseButton },
+  components: { Pokedex },
 };
 </script>
 
 <template>
   <h1>Pokemon API</h1>
-  <pre>{{ pokedex }}</pre>
-  <BaseButton @click="fetchPokemon">Fetch</BaseButton>
+  <div class="pokedex">
+    <Suspense>
+      <Pokedex />
+      <template v-slot:fallback> loading..... </template>
+    </Suspense>
+  </div>
 </template>
 
 <style scoped>
+h1 {
+  text-align: center;
+  margin-block: 1rem;
+}
+
 button {
   width: fit-content;
+}
+
+.pokedex {
+  max-width: 80rem;
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 </style>
