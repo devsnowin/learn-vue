@@ -8,9 +8,15 @@ export const routes = [
   },
   {
     name: 'pokedex',
-    path: '/pokedex',
+    path: '/pokemon',
     // lazy load the page
-    component: () => import('./views/PokedexPage.vue'),
+    component: () => import('./views/pokemon/PokedexPage.vue'),
+  },
+  {
+    name: 'pokemon',
+    path: '/pokemon/:name',
+    // lazy load the page
+    component: () => import('./views/pokemon/PokemonPage.vue'),
   },
   {
     name: 'Doggy',

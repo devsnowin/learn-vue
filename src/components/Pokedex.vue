@@ -1,31 +1,47 @@
 <script setup>
 import { getPokedex } from '@/composable/store';
+import { fetcher } from '@/lib/fetcher';
 import { reactive } from 'vue';
 
 const state = reactive({
   pokedex: [],
 });
 
-state.pokedex = await getPokedex();
+(async () => {
+  const pokedex = await fetcher('/?limit=50');
+  console.log(pokedex.results);
+  state.pokedex = pokedex.results;
+})();
 </script>
 
 <template>
   <h1
+    class="pokemon"
     v-for="(pokemon, i) in state.pokedex"
     :pokemon="pokemon"
     :key="`pokemon-${i}`"
   >
-    {{ pokemon.name }}
+    <router-link :to="`/pokemon/${pokemon.name}`">
+      {{ pokemon.name }}
+    </router-link>
   </h1>
 </template>
 
 <style scoped>
-h1 {
+.pokemon {
   display: inline;
   width: fit-content;
+  font-size: 1em;
   border: 2px solid hsla(160, 100%, 37%, 1);
   border-radius: 10px;
   padding: 0.2rem 1rem;
-  margin-block: 0.5rem;
+}
+
+a {
+  color: #fff;
+}
+
+a:hover {
+  background: transparent;
 }
 </style>

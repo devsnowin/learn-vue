@@ -1,5 +1,9 @@
-export const fetcher = async (URL: string) => {
-  const res = await fetch(URL);
+const BASE_URL = 'https://pokeapi.co/api/v2/pokemon';
+
+export const fetcher = async (query: string) => {
+  const res = await fetch(`${BASE_URL}${query}`);
+
   const data = await res.json();
-  return data.results;
+  console.log(data);
+  return data;
 };

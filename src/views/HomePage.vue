@@ -1,7 +1,7 @@
 <template>
   <main>
     <router-link to="/doggy">Doggy</router-link>
-    <router-link to="/pokedex">Pokedex</router-link>
+    <router-link to="/pokemon">Pokedex</router-link>
   </main>
 </template>
 
