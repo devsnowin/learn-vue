@@ -1,18 +1,21 @@
 import HomePage from './views/HomePage.vue';
-import DoggyPage from './views/DoggyPage.vue';
-import PokedexPageVue from './views/PokedexPage.vue';
 
 export const routes = [
   {
+    name: 'Home',
     path: '/',
     component: HomePage,
   },
   {
+    name: 'pokedex',
     path: '/pokedex',
-    component: PokedexPageVue,
+    // lazy load the page
+    component: () => import('./views/PokedexPage.vue'),
   },
   {
+    name: 'Doggy',
     path: '/doggy',
-    component: DoggyPage,
+    // lazy load the page
+    component: () => import('./views/DoggyPage.vue'),
   },
 ];
