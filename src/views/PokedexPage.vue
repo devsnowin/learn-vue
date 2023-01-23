@@ -1,7 +1,7 @@
 <script>
 import { reactive } from 'vue';
-import Pokedex from './components/Pokedex.vue';
-import { name } from './composable/store';
+import Pokedex from '../components/Pokedex.vue';
+import { name } from '../composable/store';
 export default {
   components: { Pokedex },
   setup() {

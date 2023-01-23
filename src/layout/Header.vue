@@ -1,6 +1,8 @@
 <template>
   <header>
-    <h1 class="green">Doggy</h1>
+    <router-link to="/">
+      <h1 class="green">Vue Playgroud</h1>
+    </router-link>
   </header>
 </template>
 
@@ -11,5 +13,9 @@ header {
 
   display: grid;
   place-items: center;
+}
+
+a:hover {
+  background-color: transparent;
 }
 </style>
