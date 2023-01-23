@@ -1,9 +1,8 @@
 <script setup>
-import DogsList from './components/DogsList.vue';
-import DogForm from './components/DogForm.vue';
-import DogsStat from './components/DogsStat.vue';
-import FavoriteDogs from './components/FavoriteDogs.vue';
-import RootLayout from './layout/RootLayout.vue';
+import DogsList from '../components/DogsList.vue';
+import DogForm from '../components/DogForm.vue';
+import DogsStat from '../components/DogsStat.vue';
+import FavoriteDogs from '../components/FavoriteDogs.vue';
 </script>
 
 <script>
@@ -13,7 +12,6 @@ export default {
     DogForm,
     DogsStat,
     FavoriteDogs,
-    RootLayout,
   },
   data() {
     return {
@@ -70,32 +68,6 @@ export default {
 };
 </script>
 
-<template>
-  <RootLayout>
-    <main>
-      <div class="left">
-        <section>
-          <DogForm :dogs="dogs" @add-dog="addNewDog" />
-        </section>
-        <section>
-          <DogsList :dogs="dogs" @add-to-fav="addToFavorites" />
-        </section>
-      </div>
-      <div class="right">
-        <section>
-          <DogsStat :dogs="dogs" />
-        </section>
-        <section>
-          <FavoriteDogs
-            :favorites="favorites"
-            @remove-from-fav="removeFromFavorites"
-          />
-        </section>
-      </div>
-    </main>
-  </RootLayout>
-</template>
-
 <style scoped>
 main {
   width: 100%;
@@ -123,3 +95,27 @@ h1 {
   margin-block: 1rem;
 }
 </style>
+
+<template>
+  <main>
+    <div class="left">
+      <section>
+        <DogForm :dogs="dogs" @add-dog="addNewDog" />
+      </section>
+      <section>
+        <DogsList :dogs="dogs" @add-to-fav="addToFavorites" />
+      </section>
+    </div>
+    <div class="right">
+      <section>
+        <DogsStat :dogs="dogs" />
+      </section>
+      <section>
+        <FavoriteDogs
+          :favorites="favorites"
+          @remove-from-fav="removeFromFavorites"
+        />
+      </section>
+    </div>
+  </main>
+</template>
