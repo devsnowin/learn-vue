@@ -1,19 +1,12 @@
 <script setup>
+import { getPokedex } from '@/composable/store';
 import { reactive } from 'vue';
-
-const URL = 'https://pokeapi.co/api/v2/pokemon?limit=151';
 
 const state = reactive({
   pokedex: [],
 });
 
-async function fetchPokemon() {
-  const res = await fetch(URL);
-  const data = await res.json();
-  return data.results;
-}
-
-state.pokedex = await fetchPokemon();
+state.pokedex = await getPokedex();
 </script>
 
 <template>
